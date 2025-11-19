@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Privacy Policy for FamilyNest, an open-source, free, and self-hostable collaborative family tree project."
+    />
+
+    <title data-t="PRIVACY_POLICY_PAGE.TITLE">
+      Privacy Policy - FamilyNest
+    </title>
+    <link rel="stylesheet" href="/static/styles/legal_text.css" />
+    <script defer src="/static/scripts/translation.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        initTranslations(getBestLanguage());
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 data-t="PRIVACY_POLICY_PAGE.PAGE_TITLE">Privacy Policy</h1>
+        <p class="intro" data-t="PRIVACY_POLICY_PAGE.INTRO">
+          We are committed to protecting the privacy of our users. This privacy
+          policy explains how we handle data on this site.
+        </p>
+      </div>
+
+      <div class="card">
+        <section>
+          <h2 data-t="PRIVACY_POLICY_PAGE.DATA_COLLECTED_TITLE">
+            1. Data Collected
+          </h2>
+
+          <div class="data-protection">
+            <div class="data-icon">🔒</div>
+            <div>
+              <p data-t="PRIVACY_POLICY_PAGE.DATA_COLLECTED_CONTENT">
+                This site does not collect any personal data. If we use tools
+                like Google Analytics, the data collected is anonymous and used
+                only for statistical purposes.
+              </p>
+            </div>
+          </div>
+
+          <div class="privacy-guarantee">
+            <p data-t="PRIVACY_POLICY_PAGE.PRIVACY_GUARANTEE">
+              No personal identifiers are stored in our systems. All data
+              related to your identity is managed exclusively by your login
+              provider.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 data-t="PRIVACY_POLICY_PAGE.DATA_USAGE_TITLE">2. Use of Data</h2>
+          <p data-t="PRIVACY_POLICY_PAGE.DATA_USAGE_CONTENT">
+            The anonymous data collected is used to improve the user experience
+            and understand how visitors interact with the site.
+          </p>
+        </section>
+
+        <section>
+          <h2 data-t="PRIVACY_POLICY_PAGE.COOKIES_TITLE">3. Cookies</h2>
+          <p data-t="PRIVACY_POLICY_PAGE.COOKIES_CONTENT">
+            We do not use cookies to track users. However, if we use tools like
+            Google Analytics, cookies may be used to collect anonymous data.
+          </p>
+        </section>
+
+        <section>
+          <h2 data-t="PRIVACY_POLICY_PAGE.CONTACT_TITLE">4. Contact</h2>
+          <p data-t="PRIVACY_POLICY_PAGE.CONTACT_CONTENT">
+            For any questions regarding this privacy policy, you can contact us
+            at the following address:
+          </p>
+
+          <div class="contact-details">
+            <p>
+              <strong data-t="PRIVACY_POLICY_PAGE.CONTACT_EMAIL_LABEL"
+                >Email:</strong
+              >
+              {{support_email}}
+            </p>
+            <a
+              href="mailto:{{support_email}}"
+              class="contact-link"
+              data-t="PRIVACY_POLICY_PAGE.CONTACT_SEND_EMAIL"
+              >Send an email</a
+            >
+          </div>
+        </section>
+
+        <div class="note">
+          <p>
+            <strong data-t="LEGAL_NOTICE_PAGE.LAST_UPDATE">Last update:</strong>
+            11/11/2025
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p data-t="LEGAL_NOTICE_PAGE.FOOTER">
+          FamilyNest &copy; 2025 - All rights reserved
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    <meta
+      name="description"
+      content="FamilyNest: Your personal dashboard to manage and share your collaborative family trees. Create, edit, and invite family members."
+    />
+
+    <title data-t="HOME_PAGE.TITLE">Home - FamilyNest</title>
+    <link rel="stylesheet" href="/static/styles/home.css" />
+    <script
+      defer
+      src="/static/scripts/translation.js"
+    ></script>
+
+    <script>
+      let csrf_token = "{{ csrf_token() }}";
+    </script>
+  </head>
+  <body>
+    <div id="createTreeModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3
+            class="modal-title"
+            data-t="HOME_PAGE.CREATE_MODAL.CREATE_NEW_TREE"
+          ></h3>
+          <button class="modal-close" onclick="closeModal('createTreeModal')">
+            &times;
+          </button>
+        </div>
+        <form id="new-tree-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+          <div class="form-group">
+            <label
+              class="form-label"
+              for="tree-name"
+              data-t="HOME_PAGE.CREATE_MODAL.TREE_NAME"
+              >Tree name</label
+            >
+            <input
+              type="text"
+              id="tree-name"
+              class="modal-input"
+              data-t-placeholder="HOME_PAGE.CREATE_MODAL.MY_FAMILY_TREE"
+              placeholder="My Family Tree"
+              required
+            />
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" id="tree-public" />
+            <label for="tree-public" data-t="HOME_PAGE.CREATE_MODAL.MAKE_PUBLIC"
+              >Make this tree public</label
+            >
+          </div>
+          <div id="status"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="modal-btn modal-btn-secondary"
+              onclick="closeModal('createTreeModal')"
+              data-t="FORM.CANCEL"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="modal-btn modal-btn-primary"
+              data-t="HOME_PAGE.CREATE_MODAL.CREATE_TREE"
+            >
+              Create the tree
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="shareModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title" data-t="HOME_PAGE.SHARE_MODAL.SHARE_TREE">
+            Share Tree
+          </h3>
+          <button class="modal-close" onclick="closeModal('shareModal')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="share-section">
+            <h4
+              style="margin-bottom: 0.75rem; color: var(--text-primary)"
+              data-t="HOME_PAGE.SHARE_MODAL.INVITE_LINKS"
+            >
+              Invite links
+            </h4>
+            <div class="share-buttons">
+              <button
+                class="share-btn"
+                onclick="generateInviteLinkFromModal('viewer')"
+                data-t="HOME_PAGE.SHARE_MODAL.CREATE_LINK.VIEWER"
+              >
+                Create link (viewer)
+              </button>
+              <button
+                class="share-btn"
+                onclick="generateInviteLinkFromModal('editor')"
+                data-t="HOME_PAGE.SHARE_MODAL.CREATE_LINK.EDITOR"
+              >
+                Create link (editor)
+              </button>
+            </div>
+
+            <h4
+              style="margin: 1.5rem 0 0.75rem; color: var(--text-primary)"
+              data-t="HOME_PAGE.SHARE_MODAL.INVITE_BY_MAIL"
+            >
+              Invite by email
+            </h4>
+            <form class="share-form" onsubmit="handleShare(event)">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
+              <input
+                type="email"
+                name="email"
+                autocomplete="off"
+                data-t-placeholder="HOME_PAGE.SHARE_MODAL.USER_EMAIL"
+                placeholder="User's email"
+                required
+              />
+              <select name="role">
+                <option value="viewer" data-t="HOME_PAGE.SHARE_MODAL.VIEWER">
+                  Viewer
+                </option>
+                <option value="editor" data-t="HOME_PAGE.SHARE_MODAL.EDITOR">
+                  Editor
+                </option>
+              </select>
+              <button type="submit" data-t="HOME_PAGE.SHARE_MODAL.INVITE">
+                Inviter
+              </button>
+            </form>
+
+            <h4
+              style="margin: 1.5rem 0 0.75rem; color: var(--text-primary)"
+              data-t="HOME_PAGE.SHARE_MODAL.PEOPLE_WITH_ACCESS"
+            >
+              People with access
+            </h4>
+            <ul class="share-list" id="shareList"></ul>
+
+            <div class="invitations-list">
+              <h4
+                style="margin: 1.5rem 0 0.75rem; color: var(--text-primary)"
+                data-t="HOME_PAGE.SHARE_MODAL.ACTIVE_INVITE_LINKS"
+              >
+                Active invitation links
+              </h4>
+              <ul class="share-list" id="invitationsList"></ul>
+            </div>
+
+            <div
+              id="shareStatus"
+              style="margin-top: 0.5rem; font-weight: bold"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3
+            class="modal-title"
+            id="confirmModalTitle"
+            data-t="HOME_PAGE.CONFIRM_MODAL.TITLE"
+          ></h3>
+          <button class="modal-close" onclick="closeModal('confirmModal')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" id="confirmModalBody"></div>
+        <div class="modal-footer">
+          <button
+            class="modal-btn modal-btn-secondary"
+            onclick="closeModal('confirmModal')"
+            data-t="FORM.CANCEL"
+          >
+            Cancel
+          </button>
+          <button
+            class="modal-btn modal-btn-danger"
+            id="confirmModalBtn"
+            data-t="FORM.OK"
+          >
+            Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="promptModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3
+            class="modal-title"
+            id="promptModalTitle"
+            data-t="HOME_PAGE.PROMPT_MODAL.TITLE"
+          >
+            Information
+          </h3>
+          <button class="modal-close" onclick="closeModal('promptModal')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="promptModalBody"></p>
+          <input type="text" id="promptModalInput" class="modal-input" />
+        </div>
+        <div class="modal-footer">
+          <button
+            class="modal-btn modal-btn-secondary"
+            onclick="closeModal('promptModal')"
+            data-t="FORM.CANCEL"
+          >
+            Cancel
+          </button>
+          <button
+            class="modal-btn modal-btn-primary"
+            id="promptModalBtn"
+            data-t="FORM.OK"
+          >
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="alertModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3
+            class="modal-title"
+            id="alertModalTitle"
+            data-t="HOME_PAGE.ALERT_MODAL.TITLE"
+          >
+            Information
+          </h3>
+          <button class="modal-close" onclick="closeModal('alertModal')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" id="alertModalBody"></div>
+        <div class="modal-footer">
+          <button
+            class="modal-btn modal-btn-primary"
+            onclick="closeModal('alertModal')"
+            data-t="FORM.OK"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="successModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-success-icon">✓</div>
+        <div class="modal-header">
+          <h3
+            class="modal-title"
+            id="successModalTitle"
+            data-t="HOME_PAGE.SUCCESS_MODAL.TITLE"
+          >
+            Succès
+          </h3>
+          <button class="modal-close" onclick="closeModal('successModal')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" id="successModalBody"></div>
+        <div class="modal-footer">
+          <button
+            class="modal-btn modal-btn-primary"
+            onclick="closeModal('successModal')"
+            data-t="FORM.OK"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="linkModal" class="modal-overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 class="modal-title" data-t="HOME_PAGE.LINK_MODAL.TITLE">
+            Invitation link generated
+          </h3>
+          <button class="modal-close" onclick="closeModal('linkModal')">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <p
+            style="color: var(--text-primary); margin-bottom: 1rem"
+            data-t="HOME_PAGE.LINK_MODAL.INSTRUCTION"
+          >
+            Copy this link and share it:
+          </p>
+          <div class="modal-link-container" id="linkModalContent"></div>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="modal-btn modal-btn-primary"
+            onclick="copyLinkAndClose()"
+            data-t="HOME_PAGE.LINK_MODAL.COPY_AND_CLOSE"
+          >
+            Copy and close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="header">
+      <span
+        ><span data-t="HOME_PAGE.HEADER.LOGGED_IN_AS">Logged in as:</span>
+        <span> </span>
+        <strong>{{ user_email }}</strong></span>
+      <div class="header-actions">
+        <a href="{{ url_for('auth.account') }}" data-t="HOME_PAGE.HEADER.ACCOUNT"
+          >Account</a
+        >
+        <a href="{{ url_for('auth.logout') }}" data-t="HOME_PAGE.HEADER.LOGOUT"
+          >Logout</a
+        >
+      </div>
+    </div>
+
+    <div class="page-header">
+      <h1 data-t="HOME_PAGE.PAGE_HEADER.MY_TREES">My Trees</h1>
+      <button class="create-tree-btn" onclick="showModal('createTreeModal')">
+        <span>+</span>
+        <span data-t="HOME_PAGE.PAGE_HEADER.CREATE_TREE">Create a tree</span>
+      </button>
+    </div>
+
+    {% if trees %}
+    <div class="cards-grid">
+      {% for tree in trees %}
+      <div class="tree-card">
+        <div class="tree-card-header">
+          <div class="tree-card-title">
+            <a href="{{ url_for('pages.tree_page', tree_id=tree.id) }}"
+              >{{ tree.name }}</a
+            >
+            <span class="tree-card-id">ID: {{ tree.id }}</span>
+          </div>
+        </div>
+
+        <div class="tree-card-stats">
+          <div class="stat-item">
+            <svg
+              class="stat-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
+            </svg>
+            <span
+              >{{ (tree.editors|length) + (tree.viewers|length) }}
+              <span data-t="HOME_PAGE.TREE_CARD.PEOPLE_WITH_ACCESS">
+                person(s) with access</span
+              ></span
+            >
+          </div>
+          <div class="stat-item">
+            <svg
+              class="stat-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+            <span
+              ><span data-t="HOME_PAGE.TREE_CARD.CREATED_ON">Created on:</span>
+              {{ tree.created_at or 'N/A' }}</span
+            >
+          </div>
+          <div class="stat-item">
+            <svg
+              class="stat-icon"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <span data-t="HOME_PAGE.TREE_CARD.MODIFIED_ON">Modified on:</span>
+            {{ tree.updated_at or tree.created_at or 'N/A' }}</span
+            >
+          </div>
+        </div>
+
+        <div class="tree-card-actions">
+          <button
+            class="card-btn card-btn-primary"
+            onclick="window.location.href='{{ url_for('pages.tree_page', tree_id=tree.id) }}'"
+          >
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              ></path>
+            </svg>
+            <span data-t="HOME_PAGE.TREE_CARD.EDIT">Edit</span>
+          </button>
+          {% if tree["admin"] %}
+          <button
+            class="card-btn card-btn-secondary"
+            onclick='openShareModal("{{ tree.id }}", {{ tree.editors | tojson }}, {{ tree.viewers | tojson }}, {{ tree.invitations | tojson }})'
+          >
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+              ></path>
+            </svg>
+            <span data-t="HOME_PAGE.TREE_CARD.SHARE">Share</span>
+          </button>
+          <button
+            class="card-btn card-btn-danger"
+            data-tree-id="{{ tree.id }}"
+            data-tree-name="{{ tree.name }}"
+            onclick="deleteTree(this)"
+          >
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+              ></path>
+            </svg>
+            <span data-t="HOME_PAGE.TREE_CARD.DELETE">Delete</span>
+          </button>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <div class="empty-state-icon">🌳</div>
+      <h2 data-t="HOME_PAGE.EMPTY_STATE.NO_TREES_YET">No trees yet</h2>
+      <p data-t="HOME_PAGE.EMPTY_STATE.CREATE_FIRST_TREE">
+        Create your first family tree to get started
+      </p>
+    </div>
+    {% endif %}
+
+    <script src="/static/scripts/home.js"></script>
+  </body>
+</html>

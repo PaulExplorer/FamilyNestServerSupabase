@@ -1,0 +1,387 @@
+{
+  "HOME_PAGE": {
+    "TITLE": "Startseite - FamilyNest",
+    "CREATE_MODAL": {
+      "CREATE_NEW_TREE": "Neuen Baum erstellen",
+      "TREE_NAME": "Name des Baumes",
+      "MY_FAMILY_TREE": "Mein Stammbaum",
+      "MAKE_PUBLIC": "Diesen Baum öffentlich machen",
+      "CREATE_TREE": "Baum erstellen",
+      "CREATED": "Baum erstellt! ID: {id}. Seite wird aktualisiert..."
+    },
+    "SHARE_MODAL": {
+      "SHARE_TREE": "Baum teilen",
+      "INVITE_LINKS": "Einladungslinks",
+      "CREATE_LINK": {
+        "VIEWER": "Link generieren (Leser)",
+        "EDITOR": "Link generieren (Editor)",
+        "ERROR": "Fehler",
+        "ERROR_GEN_LINK": "Ein Fehler ist beim Generieren des Links aufgetreten: {error}"
+      },
+      "CHANGE_ROLE": {
+        "SHORT": "Rolle ändern",
+        "LONG": "Möchten Sie die Rolle dieses Benutzers wirklich auf '{newRole}' ändern?"
+      },
+      "REVOKE_ACCESS": {
+        "SHORT": "Zugriff entziehen",
+        "LONG": "Möchten Sie den Zugriff dieses Benutzers wirklich widerrufen?"
+      },
+      "REVOKE_LINK": {
+        "SHORT": "Link widerrufen",
+        "LONG": "Möchten Sie diesen Einladungslink wirklich widerrufen? Er wird nicht mehr nutzbar sein."
+      },
+      "LIMIT_USER": {
+        "SHORT": "Nutzungslimit",
+        "LONG": "Wie viele Personen dürfen diesen Link verwenden? (Leer lassen für unbegrenzte Nutzung)",
+        "ERROR": "Fehler",
+        "INVALID_NUMBER": "Bitte geben Sie eine gültige Zahl größer als 0 ein."
+      },
+      "USER_EMAIL": "E-Mail des Benutzers",
+      "INVITE_BY_MAIL": "Per E-Mail einladen",
+      "VIEWER": "Leser",
+      "EDITOR": "Editor",
+      "INVITE": "Einladen",
+      "PEOPLE_WITH_ACCESS": "Personen mit Zugriff",
+      "ACTIVE_INVITE_LINKS": "Aktive Einladungslinks",
+      "SET_VIEWER": "Auf Leser setzen",
+      "SET_EDITOR": "Auf Editor setzen",
+      "REVOKE": "Widerrufen",
+      "NO_USERS": "Dieser Baum ist mit niemandem geteilt.",
+      "LINK": "Link",
+      "USAGE": "Verwendet: {usage}",
+      "NO_INVITATIONS": "Keine aktiven Einladungslinks."
+    },
+    "HEADER": {
+      "LOGGED_IN_AS": "Eingeloggt als: ",
+      "LOGOUT": "Abmelden",
+      "ACCOUNT": "Mein Konto"
+    },
+    "PAGE_HEADER": {
+      "MY_TREES": "Meine Bäume",
+      "CREATE_TREE": "Baum erstellen"
+    },
+    "TREE_CARD": {
+      "PEOPLE_WITH_ACCESS": "Person(en) mit Zugriff",
+      "CREATED_ON": "Erstellt am:",
+      "MODIFIED_ON": "Zuletzt geändert:",
+      "EDIT": "Bearbeiten",
+      "SHARE": "Teilen",
+      "DELETE": "Löschen"
+    },
+    "EMPTY_STATE": {
+      "NO_TREES_YET": "Noch keine Bäume vorhanden",
+      "CREATE_FIRST_TREE": "Erstellen Sie Ihren ersten Stammbaum, um zu beginnen"
+    },
+    "CONFIRM_MODAL": {
+      "TITLE": "Bestätigung"
+    },
+    "DELETE_MODAL": {
+      "DELETE_TREE": {
+        "SHORT": "Baum löschen",
+        "LONG": "Sind Sie sicher, dass Sie den Baum \"{treeName}\" löschen möchten?\nDiese Aktion ist irreversibel und löscht alle zugehörigen Personen und Dateien."
+      },
+      "DELETE_SUCESS": {
+        "SHORT": "Baum gelöscht!",
+        "LONG": "Der Baum wurde erfolgreich gelöscht."
+      },
+      "DELETE_ERROR": {
+        "SHORT": "Fehler",
+        "LONG": "Fehler beim Löschen: {error}"
+      }
+    },
+    "PROMPT_MODAL": {
+      "TITLE": "Information"
+    },
+    "ALERT_MODAL": {
+      "TITLE": "Information"
+    },
+    "SUCCESS_MODAL": {
+      "TITLE": "Erfolg"
+    },
+    "LINK_MODAL": {
+      "TITLE": "Einladungslink generiert",
+      "INSTRUCTION": "Kopieren Sie diesen Link und teilen Sie ihn:",
+      "COPY_AND_CLOSE": "Kopieren und Schließen",
+      "COPY_SUCCESS": {
+        "SHORT": "Kopiert!",
+        "LONG": "Der Link wurde in Ihre Zwischenablage kopiert."
+      },
+      "COPY_ERROR": {
+        "SHORT": "Fehler",
+        "LONG": "Konnte den Link nicht automatisch kopieren."
+      }
+    },
+    "API_MESSAGES": {
+      "SUCESS": "Operation erfolgreich. Aktualisierung...",
+      "ERROR": "Fehler: {error}",
+      "ERROR_OCCURED": "Es ist ein Fehler aufgetreten.",
+      "NETWORK_ERROR": "Netzwerkfehler: {error}"
+    }
+  },
+  "INVALID_LINK_PAGE": {
+    "TITLE": "Ungültiger Link - FamilyNest",
+    "ERROR_TITLE": "Hoppla!",
+    "INVALID_LINK": "Dieser Einladungslink ist ungültig oder abgelaufen.",
+    "GO_HOME": "Zur Startseite zurückkehren"
+  },
+  "CONTACT_PAGE": {
+    "TITLE": "Kontakt - FamilyNest",
+    "PAGE_TITLE": "Kontakt",
+    "INTRO": "Für Fragen, Anregungen oder Feedback können Sie mich gerne kontaktieren.",
+    "BY_EMAIL_TITLE": "Per E-Mail",
+    "BY_EMAIL_DESCRIPTION": "Der schnellste Weg, mich direkt zu kontaktieren.",
+    "ON_GITHUB_TITLE": "Projekt auf GitHub",
+    "ON_GITHUB_DESCRIPTION": "Quellcode erkunden und die Projektentwicklung verfolgen.",
+    "ON_GITHUB_LINK": "GitHub-Repository ansehen",
+    "FOOTER_NOTE": "Antworten in der Regel innerhalb von 24-48 Stunden. Vielen Dank für Ihr Interesse!"
+  },
+  "LEGAL_NOTICE_PAGE": {
+    "TITLE": "Impressum - FamilyNest",
+    "PAGE_TITLE": "Impressum",
+    "INTRO": "Dieses Impressum regelt die Nutzung von FamilyNest.",
+    "EDITOR_TITLE": "1. Herausgeber der Website",
+    "EDITOR_GITHUB": "Github Benutzername: PaulExplorer",
+    "EDITOR_EMAIL": "E-Mail:",
+    "HOSTING_TITLE": "2. Hosting",
+    "HOSTING_NAME": "Hostername: Vercel",
+    "HOSTING_WEBSITE": "Webseite:",
+    "HOSTING_WEBSITE_LINK": "Webseite des Hosters",
+    "DATA_HOSTING_TITLE": "3. Datenspeicherung",
+    "DATA_HOSTING_NAME": "Hostername: Supabase",
+    "INTELLECTUAL_PROPERTY_TITLE": "4. Geistiges Eigentum",
+    "INTELLECTUAL_PROPERTY_CONTENT": "Der Inhalt dieser Website ist Eigentum von PLLX76 und durch Gesetze zum Schutz des geistigen Eigentums geschützt.",
+    "INTELLECTUAL_PROPERTY_LICENSE": "Der Quellcode ist unter der Open-Source-Lizenz AGPLv3 verfügbar.",
+    "PRIVACY_TITLE": "5. Datenschutz",
+    "PRIVACY_CONTENT": "Diese Website sammelt keine persönlichen Daten.",
+    "LIABILITY_TITLE": "6. Haftungsbeschränkung",
+    "LIABILITY_CONTENT": "Die auf dieser Website bereitgestellten Informationen dienen nur zu Informationszwecken und begründen keine Haftung des Herausgebers.",
+    "APPLICABLE_LAW_TITLE": "7. Anwendbares Recht",
+    "APPLICABLE_LAW_CONTENT": "Diese Website unterliegt französischem Recht.",
+    "LAST_UPDATE": "Letzte Aktualisierung:",
+    "FOOTER": "FamilyNest © 2025 - Alle Rechte vorbehalten"
+  },
+  "PRIVACY_POLICY_PAGE": {
+    "TITLE": "Datenschutzerklärung - FamilyNest",
+    "PAGE_TITLE": "Datenschutzerklärung",
+    "INTRO": "Wir verpflichten uns, die Privatsphäre unserer Benutzer zu schützen. Diese Datenschutzerklärung erklärt, wie wir Daten auf dieser Website verarbeiten.",
+    "DATA_COLLECTED_TITLE": "1. Erfasste Daten",
+    "DATA_COLLECTED_CONTENT": "Diese Website sammelt keine personenbezogenen Daten. Wenn wir Tools wie Google Analytics verwenden, sind die erfassten Daten anonym und dienen nur statistischen Zwecken.",
+    "PRIVACY_GUARANTEE": "In unseren Systemen werden keine persönlichen Kennungen gespeichert. Alle Daten, die Ihre Identität betreffen, werden ausschließlich von Ihrem Anmeldeanbieter verwaltet.",
+    "DATA_USAGE_TITLE": "2. Datennutzung",
+    "DATA_USAGE_CONTENT": "Die anonym erfassten Daten werden verwendet, um die Benutzererfahrung zu verbessern und zu verstehen, wie Besucher mit der Website interagieren.",
+    "COOKIES_TITLE": "3. Cookies",
+    "COOKIES_CONTENT": "Wir verwenden keine Cookies, um Benutzer zu verfolgen. Wenn wir jedoch Tools wie Google Analytics verwenden, können Cookies zur Erfassung anonymer Daten verwendet werden.",
+    "CONTACT_TITLE": "4. Kontakt",
+    "CONTACT_CONTENT": "Für Fragen zu dieser Datenschutzerklärung können Sie uns unter folgender Adresse kontaktieren:",
+    "CONTACT_EMAIL_LABEL": "E-Mail:",
+    "CONTACT_SEND_EMAIL": "E-Mail senden"
+  },
+  "TERMS_OF_SERVICE_PAGE": {
+    "TITLE": "Nutzungsbedingungen - FamilyNest",
+    "PAGE_TITLE": "Nutzungsbedingungen",
+    "INTRO": "Durch die Nutzung von FamilyNest stimmen Sie den folgenden Nutzungsbedingungen zu. Bitte lesen Sie diese sorgfältig durch.",
+    "SERVICE_DESCRIPTION_TITLE": "1. Beschreibung des Dienstes",
+    "SERVICE_DESCRIPTION_CONTENT": "FamilyNest ist ein Open-Source-Tool zum Erstellen und Teilen von Stammbäumen. Es wird kostenlos und ohne Garantie bereitgestellt.",
+    "ACCEPTABLE_USE_TITLE": "2. Zulässige Nutzung",
+    "ACCEPTABLE_USE_CONTENT": "Sie verpflichten sich, diese Website in Übereinstimmung mit allen geltenden Gesetzen und Vorschriften zu nutzen. Sie dürfen diese Website nicht für illegale oder nicht autorisierte Aktivitäten verwenden.",
+    "INTELLECTUAL_PROPERTY_TITLE": "3. Geistiges Eigentum",
+    "INTELLECTUAL_PROPERTY_CONTENT": "Der Inhalt dieser Website ist Eigentum von PaulExplorer und durch Gesetze zum Schutz des geistigen Eigentums geschützt.",
+    "LICENSE_NOTE_TITLE": "Hinweis zur Lizenz:",
+    "LICENSE_NOTE_CONTENT": "Der Quellcode ist unter der Open-Source-Lizenz AGPLv3 verfügbar. Sie können den Quellcode gemäß den Bedingungen dieser Lizenz frei einsehen, nutzen und ändern.",
+    "LIABILITY_LIMITATION_TITLE": "4. Haftungsbeschränkung",
+    "LIABILITY_LIMITATION_CONTENT": "Die auf dieser Website bereitgestellten Informationen dienen nur zu Informationszwecken und begründen keine Haftung des Herausgebers. Wir haften nicht für direkte, indirekte, spezielle oder Folgeschäden, die sich aus der Nutzung oder der Unfähigkeit zur Nutzung dieser Website ergeben.",
+    "CONDITIONS_MODIFICATION_TITLE": "5. Änderungen der Bedingungen",
+    "CONDITIONS_MODIFICATION_CONTENT": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen treten sofort nach ihrer Veröffentlichung auf dieser Seite in Kraft."
+  },
+  "LANDING_PAGE": {
+    "TITLE": "FamilyNest - Ihr kollaborativer Stammbaum",
+    "HEADER": {
+      "DEMO": "Demo",
+      "FEATURES": "Funktionen",
+      "OPEN_SOURCE": "Open Source",
+      "LOGIN": "Anmelden"
+    },
+    "HERO": {
+      "TITLE": "Erstellen Sie Ihren kollaborativen Stammbaum",
+      "TAGLINE": "Ein Open-Source-Projekt für Sie und Ihre Familie. Kostenlos, einfach und vollständig unter Ihrer Kontrolle.",
+      "BADGE_OPEN_SOURCE": "🌱 Open Source",
+      "BADGE_FREE": "💰 100% Kostenlos",
+      "BADGE_SELF_HOSTABLE": "🔒 Selbst-hostbar",
+      "BADGE_COLLABORATIVE": "👨‍👩‍👧‍👦 Kollaborativ",
+      "CTA_GET_STARTED": "Loslegen",
+      "CTA_VIEW_CODE": "Code ansehen",
+      "DEMO_HINT": "Die Demo ist gleich nebenan →",
+      "FULLSCREEN_TITLE": "Vollbild",
+      "FULLSCREEN_EXIT": "Vollbild verlassen"
+    },
+    "CONTEXT": {
+      "TITLE": "Ein Open-Source- und kollaboratives Projekt",
+      "MODULAR_TITLE": "Modulare Architektur",
+      "MODULAR_TEXT": "Eine Demonstration der Full-Stack-Entwicklung: modulare Architektur, Authentifizierungsverwaltung und Zusammenarbeit mit einer Datenbank.",
+      "COLLABORATION_TITLE": "Zusammenarbeit und Teilen",
+      "COLLABORATION_TEXT": "Ein Werkzeug, das entwickelt wurde, um mehreren Benutzern die sichere und kollaborative Erstellung und gemeinsame Nutzung von Stammbäumen zu ermöglichen.",
+      "COMMUNITY_TITLE": "Für die Community",
+      "COMMUNITY_TEXT": "Ein Beispiel für eine komplette Open-Source-Webanwendung: modulares Frontend und Backend mit Supabase. Nutzen Sie es, modifizieren Sie es und tragen Sie zu seiner Verbesserung bei."
+    },
+    "FEATURES": {
+      "TITLE": "Was Sie tun können",
+      "CREATE_TREES_TITLE": "Stammbäume erstellen",
+      "CREATE_TREES_ITEM_1": "Personen hinzufügen",
+      "CREATE_TREES_ITEM_2": "Beziehungen definieren",
+      "CREATE_TREES_ITEM_3": "Intuitive visuelle Oberfläche",
+      "COLLABORATE_TITLE": "Mit der Familie zusammenarbeiten",
+      "COLLABORATE_ITEM_1": "Mitglieder einladen",
+      "COLLABORATE_ITEM_2": "Rollenverwaltung",
+      "COLLABORATE_ITEM_3": "Eigentümer, Editor, Leser",
+      "STORE_MEMORIES_TITLE": "Erinnerungen speichern",
+      "STORE_MEMORIES_ITEM_1": "Fotos hinzufügen",
+      "STORE_MEMORIES_ITEM_2": "Dokumente teilen",
+      "STORE_MEMORIES_ITEM_3": "Ihre Archive zentralisieren",
+      "STAY_IN_CONTROL_TITLE": "Die Kontrolle behalten",
+      "STAY_IN_CONTROL_ITEM_1": "Das Projekt selbst hosten",
+      "STAY_IN_CONTROL_ITEM_2": "Ihre Daten gehören Ihnen",
+      "STAY_IN_CONTROL_ITEM_3": "Quellcode verfügbar"
+    },
+    "FOOTER": {
+      "SOURCE_CODE": "Quellcode",
+      "LEGAL_NOTICE": "Impressum",
+      "CREDIT": "Open-Source- und nicht-kommerzielles Projekt © 2024-2025 FamilyNest",
+      "CONTACT": "Kontakt"
+    },
+    "ARCHITECTURE": {
+      "TITLE": "Wie funktioniert es?",
+      "ALT_DIAGRAM": "Architekturdiagramm",
+      "FRONTEND_TITLE": "Frontend",
+      "FRONTEND_TEXT": "Baumbearbeitungsoberfläche (separates Projekt)",
+      "BACKEND_TITLE": "Backend (dieses Projekt)",
+      "BACKEND_TEXT": "Benutzerverwaltung, Speicherung, Multi-User-Support (Supabase)",
+      "DATABASE_TITLE": "Datenbank",
+      "DATABASE_TEXT": "Sichere Datenspeicherung",
+      "MODULAR_ARCHITECTURE_TITLE": "Modulare Architektur:",
+      "MODULAR_ARCHITECTURE_TEXT": "FamilyNest ist ein Beispiel für einen Backend-Server, den Sie mit dem Frontend verbinden können. Es ist eine Demonstration einer entkoppelten Architektur."
+    },
+    "OPEN_SOURCE_SECTION": {
+      "TITLE": "Transparent und offen",
+      "SUBTITLE_OPEN_SOURCE": "Open Source",
+      "ITEM_GITHUB": "Quellcode auf GitHub verfügbar",
+      "ITEM_LICENSE": "Open-Source-Lizenz",
+      "ITEM_CONTRIBUTIONS": "Beiträge willkommen",
+      "SUBTITLE_HONESTY": "Ehrlichkeit",
+      "ITEM_FREE": "100% Kostenlos",
+      "ITEM_NO_ADS": "Keine Werbung",
+      "ITEM_NO_RESELLING": "Kein Wiederverkauf von Daten",
+      "ITEM_NO_SUPPORT": "Keine Garantie für Support (persönliches Projekt)",
+      "ITEM_ACTIVE_DEV": "In aktiver Entwicklung",
+      "IMPORTANT_NOTE_TITLE": "Wichtiger Hinweis:",
+      "IMPORTANT_NOTE_TEXT": "Diese Seite ist standardmäßig nicht auf Datenschutz fokussiert, aber da sie Open Source ist, können Sie sie selbst hosten, um die volle Kontrolle über Ihre Daten zu haben."
+    },
+    "FINAL_CTA": {
+      "TITLE": "Bereit zum Erkunden?",
+      "SUBTITLE": "Der Code ist offen, und Sie können sofort mit der Erstellung Ihres Baumes beginnen.",
+      "START_NOW": "Jetzt starten",
+      "SEE_DEMO": "Demo ansehen"
+    }
+  },
+  "LOGIN_PAGE": {
+    "TITLE": "Anmeldung / Registrierung - FamilyNest",
+    "ILLUSTRATION": {
+      "TITLE": "Verwalten Sie Ihren Stammbaum",
+      "SUBTITLE": "Organisieren, visualisieren und teilen Sie Ihre Stammbäume in einer kollaborativen Umgebung.",
+      "BADGE_COLLABORATION": "Zusammenarbeit",
+      "BADGE_SHARING": "Einfaches Teilen",
+      "BADGE_OPEN_SOURCE": "Open Source"
+    },
+    "TABS": {
+      "LOGIN": "Anmeldung",
+      "SIGNUP": "Registrierung"
+    },
+    "LOGIN_FORM": {
+      "TITLE": "Anmeldung zu Ihrem Konto",
+      "SUBTITLE": "Bitte geben Sie Ihre Zugangsdaten ein, um auf Ihren Bereich zuzugreifen und Ihren Stammbaum zu erkunden.",
+      "EMAIL_PLACEHOLDER": "E-Mail",
+      "PASSWORD_PLACEHOLDER": "Passwort",
+      "SUBMIT_BUTTON": "Anmelden",
+      "GO_TO_SIGNUP": "Neues Konto erstellen",
+      "FORGOT_PASSWORD": "Passwort vergessen?"
+    },
+    "FORGOT_PASSWORD_FORM": {
+      "TITLE": "Passwort zurücksetzen",
+      "SUBTITLE": "Geben Sie Ihre E-Mail-Adresse ein, um einen Zurücksetzungslink zu erhalten.",
+      "SUBMIT_BUTTON": "Link senden",
+      "BACK_TO_LOGIN": "Zurück zur Anmeldung"
+    },
+    "SIGNUP_FORM": {
+      "TITLE": "Konto erstellen",
+      "SUBTITLE": "Treten Sie unserer Plattform bei, um Ihren Stammbaum mit Ihrer Familie zu erstellen und zu teilen.",
+      "PSEUDO_PLACEHOLDER": "Benutzername",
+      "CREATE_PASSWORD_PLACEHOLDER": "Passwort erstellen",
+      "CONFIRM_PASSWORD_PLACEHOLDER": "Passwort bestätigen",
+      "TERMS_AGREEMENT": "Ich akzeptiere die",
+      "TERMS_LINK": "Nutzungsbedingungen",
+      "AND": "und die",
+      "PRIVACY_LINK": "Datenschutzerklärung",
+      "SUBMIT_BUTTON": "Mein Konto erstellen",
+      "GO_TO_LOGIN": "Ich habe bereits ein Konto"
+    },
+    "JS_MESSAGES": {
+      "PASSWORDS_DONT_MATCH": "<i>❌</i> Passwörter stimmen nicht überein.",
+      "AUTO_LOGIN_IN_PROGRESS": "Automatische Anmeldung läuft...",
+      "AUTO_LOGIN_FAILED": "<div class=\"error\"><i>❌</i> Automatische Anmeldung fehlgeschlagen: {error}</div>",
+      "AUTO_LOGIN_ERROR": "<div class=\"error\"><i>❌</i> Ein Fehler ist aufgetreten: {error}</div>"
+    },
+    "MESSAGES": {
+      "PASSWORDS_DONT_MATCH": "Die Passwörter stimmen nicht überein.",
+      "SIGNUP_SUCCESS": "Registrierung erfolgreich! Bitte überprüfen Sie Ihre E-Mail, um Ihr Konto zu bestätigen, und melden Sie sich dann an.",
+      "JOIN_TREE_PROMPT": "Bitte melden Sie sich an oder erstellen Sie ein Konto, um dem Baum beizutreten.",
+      "RESET_LINK_SENT": "Ein Zurücksetzungslink wurde an Ihre E-Mail-Adresse gesendet.",
+      "PASSWORD_RESET_SUCCESS": "Ihr Passwort wurde erfolgreich zurückgesetzt. Sie können sich jetzt anmelden."
+    }
+  },
+  "RESET_PASSWORD_PAGE": {
+    "TITLE": "Passwort zurücksetzen - FamilyNest",
+    "FORM": {
+      "TITLE": "Setzen Sie Ihr Passwort zurück",
+      "SUBTITLE": "Bitte geben Sie unten Ihr neues Passwort ein.",
+      "NEW_PASSWORD_PLACEHOLDER": "Neues Passwort",
+      "CONFIRM_PASSWORD_PLACEHOLDER": "Neues Passwort bestätigen",
+      "SUBMIT_BUTTON": "Passwort zurücksetzen"
+    },
+    "MESSAGES": {
+      "INVALID_TOKEN": "Das Zugriffstoken fehlt oder ist ungültig.",
+      "PASSWORD_MISMATCH": "Die Passwörter stimmen nicht überein oder sind leer."
+    }
+  },
+  "ACCOUNT_PAGE": {
+    "TITLE": "Mein Konto - FamilyNest",
+    "PAGE_TITLE": "Mein Konto",
+    "INFO_SECTION": {
+      "TITLE": "Meine Informationen",
+      "EMAIL": "E-Mail:",
+      "USERNAME": "Benutzername:"
+    },
+    "PASSWORD_SECTION": {
+      "TITLE": "Passwort ändern",
+      "NEW_PASSWORD": "Neues Passwort",
+      "CONFIRM_PASSWORD": "Neues Passwort bestätigen",
+      "UPDATE_BUTTON": "Passwort aktualisieren"
+    },
+    "DELETE_SECTION": {
+      "TITLE": "Konto löschen",
+      "WARNING": "⚠️ Diese Aktion ist irreversibel. Alle Ihre Daten, einschließlich Ihrer Stammbäume, werden dauerhaft gelöscht.",
+      "DELETE_BUTTON": "Mein Konto löschen"
+    },
+    "BACK_TO_HOME": "Zur Startseite zurückkehren",
+    "DELETE_MODAL": {
+      "TITLE": "Konto löschen?",
+      "BODY": "Sind Sie absolut sicher, dass Sie Ihr Konto dauerhaft löschen möchten? \n\nDiese Aktion kann nicht rückgängig gemacht werden. Alle Ihre Daten, einschließlich Ihrer Stammbäume, werden dauerhaft gelöscht.",
+      "CONFIRM_BUTTON": "Ja, mein Konto löschen"
+    },
+    "MESSAGES": {
+      "PASSWORD_MISMATCH": "Die Passwörter stimmen nicht überein oder sind leer.",
+      "PASSWORD_UPDATE_SUCCESS": "Passwort erfolgreich aktualisiert!",
+      "PASSWORD_UPDATE_ERROR": "Fehler beim Aktualisieren des Passworts.",
+      "DELETE_ACCOUNT_SUCCESS": "Konto erfolgreich gelöscht. Abmelden...",
+      "DELETE_ACCOUNT_ERROR": "Fehler beim Löschen des Kontos"
+    }
+  }
+}

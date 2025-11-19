@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FamilyNest: Create and manage your collaborative family tree. An open-source, free, and self-hostable project."
+    />
+
+    <title data-t="LANDING_PAGE.TITLE">
+      FamilyNest - Your collaborative family tree
+    </title>
+    <link rel="stylesheet" href="/static/styles/landing.css" />
+    <script defer src="/static/scripts/translation.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        initTranslations(getBestLanguage());
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">🌳 FamilyNest</div>
+          <nav class="nav-links">
+            <a href="#demo" data-t="LANDING_PAGE.HEADER.DEMO">Demo</a>
+            <a href="#features" data-t="LANDING_PAGE.HEADER.FEATURES"
+              >Features</a
+            >
+            <a href="#opensource" data-t="LANDING_PAGE.HEADER.OPEN_SOURCE"
+              >Open Source</a
+            >
+            <a
+              href="/login"
+              class="btn-nav-login"
+              data-t="LANDING_PAGE.HEADER.LOGIN"
+              >Log In</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="demo">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-left">
+            <h1>FamilyNest</h1>
+            <h2 data-t="LANDING_PAGE.HERO.TITLE">
+              Create your collaborative family tree
+            </h2>
+            <p class="tagline" data-t="LANDING_PAGE.HERO.TAGLINE">
+              An open-source project for you and your family. Free, simple, and
+              completely under your control.
+            </p>
+
+            <div class="badges">
+              <span
+                class="badge success"
+                data-t="LANDING_PAGE.HERO.BADGE_OPEN_SOURCE"
+                >🌱 Open Source</span
+              >
+              <span class="badge success" data-t="LANDING_PAGE.HERO.BADGE_FREE"
+                >💰 100% Free</span
+              >
+              <span
+                class="badge success"
+                data-t="LANDING_PAGE.HERO.BADGE_SELF_HOSTABLE"
+                >🔒 Self-hostable</span
+              >
+              <span
+                class="badge success"
+                data-t="LANDING_PAGE.HERO.BADGE_COLLABORATIVE"
+                >👨‍👩‍👧‍👦 Collaborative</span
+              >
+            </div>
+
+            <div class="cta-buttons">
+              <a
+                href="/login"
+                class="btn btn-primary"
+                data-t="LANDING_PAGE.HERO.CTA_GET_STARTED"
+                >Get Started</a
+              >
+              <a
+                href="https://github.com/PaulExplorer/FamilyNestWeb"
+                target="_blank"
+                class="btn btn-secondary"
+                data-t="LANDING_PAGE.HERO.CTA_VIEW_CODE"
+                >View Code</a
+              >
+            </div>
+            <p class="demo-hint" data-t="LANDING_PAGE.HERO.DEMO_HINT">
+              The demo is right next door →
+            </p>
+          </div>
+
+          <div class="hero-right">
+            <div class="demo-container" id="demoContainer">
+              <div class="demo-header">
+                <span class="demo-dot"></span>
+                <span class="demo-dot"></span>
+                <span class="demo-dot"></span>
+                <button
+                  class="fullscreen-btn"
+                  id="fullscreenBtn"
+                  title="Fullscreen"
+                  data-t-title="LANDING_PAGE.HERO.FULLSCREEN_TITLE"
+                >
+                  ⛶
+                </button>
+              </div>
+              <div class="demo-wrapper">
+                <iframe
+                  src="/tree/{{demo_id}}"
+                  id="demoIframe"
+                  class="demo-iframe"
+                  title="Demo Iframe"
+                  frameborder="0"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context Section -->
+    <section>
+      <div class="container">
+        <h2 class="section-title" data-t="LANDING_PAGE.CONTEXT.TITLE">
+          An Open Source and Collaborative Project
+        </h2>
+        <div class="context-grid">
+          <div class="context-card">
+            <div class="context-icon">💼</div>
+            <h3 data-t="LANDING_PAGE.CONTEXT.MODULAR_TITLE">
+              Modular Architecture
+            </h3>
+            <p data-t="LANDING_PAGE.CONTEXT.MODULAR_TEXT">
+              A full-stack development demonstration: modular architecture,
+              authentication management, and real-time collaboration with a
+              database.
+            </p>
+          </div>
+          <div class="context-card">
+            <div class="context-icon">👨‍👩‍👧‍👦</div>
+            <h3 data-t="LANDING_PAGE.CONTEXT.COLLABORATION_TITLE">
+              Collaboration and Sharing
+            </h3>
+            <p data-t="LANDING_PAGE.CONTEXT.COLLABORATION_TEXT">
+              A tool designed to allow multiple users to create and share family
+              trees collaboratively and securely.
+            </p>
+          </div>
+          <div class="context-card">
+            <div class="context-icon">🌐</div>
+            <h3 data-t="LANDING_PAGE.CONTEXT.COMMUNITY_TITLE">
+              For the Community
+            </h3>
+            <p data-t="LANDING_PAGE.CONTEXT.COMMUNITY_TEXT">
+              An open-source example of a complete web application: modular
+              front-end and backend with Supabase. Use it, modify it, and
+              contribute to its improvement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-alternate" id="features">
+      <div class="container">
+        <h2 class="section-title" data-t="LANDING_PAGE.FEATURES.TITLE">
+          What you can do
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🌳</div>
+            <h3 data-t="LANDING_PAGE.FEATURES.CREATE_TREES_TITLE">
+              Create family trees
+            </h3>
+            <ul>
+              <li data-t="LANDING_PAGE.FEATURES.CREATE_TREES_ITEM_1">
+                Add people
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.CREATE_TREES_ITEM_2">
+                Define relationships
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.CREATE_TREES_ITEM_3">
+                Intuitive visual interface
+              </li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3 data-t="LANDING_PAGE.FEATURES.COLLABORATE_TITLE">
+              Collaborate with family
+            </h3>
+            <ul>
+              <li data-t="LANDING_PAGE.FEATURES.COLLABORATE_ITEM_1">
+                Invite members
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.COLLABORATE_ITEM_2">
+                Role management
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.COLLABORATE_ITEM_3">
+                Owner, editor, viewer
+              </li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3 data-t="LANDING_PAGE.FEATURES.STORE_MEMORIES_TITLE">
+              Store memories
+            </h3>
+            <ul>
+              <li data-t="LANDING_PAGE.FEATURES.STORE_MEMORIES_ITEM_1">
+                Add photos
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.STORE_MEMORIES_ITEM_2">
+                Share documents
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.STORE_MEMORIES_ITEM_3">
+                Centralize your archives
+              </li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3 data-t="LANDING_PAGE.FEATURES.STAY_IN_CONTROL_TITLE">
+              Stay in control
+            </h3>
+            <ul>
+              <li data-t="LANDING_PAGE.FEATURES.STAY_IN_CONTROL_ITEM_1">
+                Self-host the project
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.STAY_IN_CONTROL_ITEM_2">
+                Your data remains yours
+              </li>
+              <li data-t="LANDING_PAGE.FEATURES.STAY_IN_CONTROL_ITEM_3">
+                Source code available
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section>
+      <div class="container">
+        <h2 class="section-title" data-t="LANDING_PAGE.ARCHITECTURE.TITLE">
+          How does it work?
+        </h2>
+        <div class="architecture">
+          <div class="architecture-flow">
+            <div class="arch-box">
+              <h4 data-t="LANDING_PAGE.ARCHITECTURE.FRONTEND_TITLE">
+                Front-end
+              </h4>
+              <p data-t="LANDING_PAGE.ARCHITECTURE.FRONTEND_TEXT">
+                Tree editing interface (separate project)
+              </p>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-box highlight">
+              <h4 data-t="LANDING_PAGE.ARCHITECTURE.BACKEND_TITLE">
+                Back-end (this project)
+              </h4>
+              <p data-t="LANDING_PAGE.ARCHITECTURE.BACKEND_TEXT">
+                User management, backup, multi-user (Supabase)
+              </p>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-box">
+              <h4 data-t="LANDING_PAGE.ARCHITECTURE.DATABASE_TITLE">
+                Database
+              </h4>
+              <p data-t="LANDING_PAGE.ARCHITECTURE.DATABASE_TEXT">
+                Secure data storage
+              </p>
+            </div>
+          </div>
+          <p
+            style="
+              text-align: center;
+              margin-top: 30px;
+              color: var(--text-secondary);
+            "
+          >
+            <strong
+              data-t="LANDING_PAGE.ARCHITECTURE.MODULAR_ARCHITECTURE_TITLE"
+              >Modular architecture:</strong
+            >
+            <span> </span>
+            <span data-t="LANDING_PAGE.ARCHITECTURE.MODULAR_ARCHITECTURE_TEXT">
+              FamilyNest is an example of a backend server that you can connect
+              to the front-end. It's a demonstration of a decoupled
+              architecture.</span
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source Section -->
+    <section class="section-alternate" id="opensource">
+      <div class="container">
+        <h2
+          class="section-title"
+          data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.TITLE"
+        >
+          Transparent and Open
+        </h2>
+        <div class="opensource-content">
+          <div class="opensource-col">
+            <h3 data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.SUBTITLE_OPEN_SOURCE">
+              Open Source
+            </h3>
+            <ul class="opensource-list check">
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_GITHUB">
+                Source code available on GitHub
+              </li>
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_LICENSE">
+                Open source license
+              </li>
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_CONTRIBUTIONS">
+                Contributions welcome
+              </li>
+            </ul>
+          </div>
+          <div class="opensource-col">
+            <h3 data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.SUBTITLE_HONESTY">
+              Honesty
+            </h3>
+            <ul class="opensource-list check">
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_FREE">
+                100% Free
+              </li>
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_NO_ADS">
+                No advertising
+              </li>
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_NO_RESELLING">
+                No data reselling
+              </li>
+            </ul>
+            <ul class="opensource-list warn">
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_NO_SUPPORT">
+                No support guarantee (personal project)
+              </li>
+              <li data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.ITEM_ACTIVE_DEV">
+                In active development
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="important-note">
+          <strong data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.IMPORTANT_NOTE_TITLE"
+            >Important Note:</strong
+          >
+          <span> </span>
+          <span data-t="LANDING_PAGE.OPEN_SOURCE_SECTION.IMPORTANT_NOTE_TEXT">
+            This site is not particularly privacy-focused by default, but since
+            it is open source, you can host it yourself to have full control
+            over your data.</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section>
+      <div class="container">
+        <div class="cta-final">
+          <h2 data-t="LANDING_PAGE.FINAL_CTA.TITLE">Ready to explore?</h2>
+          <p data-t="LANDING_PAGE.FINAL_CTA.SUBTITLE">
+            The code is open, and you can start building your tree now.
+          </p>
+          <div class="cta-buttons">
+            <a
+              href="/login"
+              class="btn btn-primary"
+              data-t="LANDING_PAGE.FINAL_CTA.START_NOW"
+              >Start now</a
+            >
+            <a
+              href="#demo"
+              class="btn btn-secondary"
+              data-t="LANDING_PAGE.FINAL_CTA.SEE_DEMO"
+              >See the demo</a
+            >
+            <a
+              href="https://github.com/PaulExplorer/FamilyNestWeb"
+              target="_blank"
+              class="btn btn-secondary"
+              data-t="LANDING_PAGE.FOOTER.SOURCE_CODE"
+              >Source code</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">🌳 FamilyNest</div>
+          <div class="footer-links">
+            <a
+              href="https://github.com/PaulExplorer/FamilyNestServerSupabase"
+              target="_blank"
+              data-t="LANDING_PAGE.FOOTER.SOURCE_CODE"
+              >Source code</a
+            >
+            <a href="/login" data-t="LANDING_PAGE.HEADER.LOGIN">Log In</a>
+            <a href="/contact" data-t="LANDING_PAGE.FOOTER.CONTACT">Contact</a>
+            <a href="/legal-notice" data-t="LANDING_PAGE.FOOTER.LEGAL_NOTICE"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+        <div class="footer-credit" data-t="LANDING_PAGE.FOOTER.CREDIT">
+          Open source and non-commercial project © 2024-2025 FamilyNest
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const fullscreenBtn = document.getElementById("fullscreenBtn");
+      const demoContainer = document.getElementById("demoContainer");
+      const demoIframe = document.getElementById("demoIframe");
+
+      fullscreenBtn.addEventListener("click", function () {
+        if (!demoContainer.classList.contains("fullscreen")) {
+          demoContainer.classList.add("fullscreen");
+          fullscreenBtn.textContent = "✕";
+          fullscreenBtn.title = fullscreenBtn.title = translate(
+            "LANDING_PAGE.HERO.FULLSCREEN_EXIT"
+          );
+        } else {
+          demoContainer.classList.remove("fullscreen");
+          fullscreenBtn.textContent = "⛶";
+          fullscreenBtn.title = translate("LANDING_PAGE.HERO.FULLSCREEN_TITLE");
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          demoContainer.classList.contains("fullscreen")
+        ) {
+          demoContainer.classList.remove("fullscreen");
+          fullscreenBtn.textContent = "⛶";
+          fullscreenBtn.title = translate("LANDING_PAGE.HERO.FULLSCREEN_TITLE");
+          demoIframe.style.height = "400px";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-t="LOGIN_PAGE.TITLE">Login / Signup - FamilyNest</title>    <meta
+      name="description"
+      content="Login or sign up to FamilyNest to create and manage your collaborative family trees. Open-source, free, and self-hostable."
+    />
+
+    <link rel="stylesheet" href="/static/styles/login.css" />
+    <script
+      defer
+      src="/static/scripts/translation.js"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        initTranslations(getBestLanguage());
+      });
+    </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="illustration-panel">
+        <div class="app-logo">
+          <span class="app-icon">🌳</span>
+          <div>FamilyNest</div>
+        </div>
+        <div class="app-message">
+          <h2 data-t="LOGIN_PAGE.ILLUSTRATION.TITLE">
+            Manage your family tree
+          </h2>
+          <p data-t="LOGIN_PAGE.ILLUSTRATION.SUBTITLE">
+            Organize, visualize, and share your family trees in a collaborative
+            environment.
+          </p>
+        </div>
+        <div class="feature-badges">
+          <div class="feature-badge">
+            👨‍👩‍👧‍👦
+            <span data-t="LOGIN_PAGE.ILLUSTRATION.BADGE_COLLABORATION"
+              >Real-time collaboration</span
+            >
+          </div>
+          <div class="feature-badge">
+            🌐
+            <span data-t="LOGIN_PAGE.ILLUSTRATION.BADGE_SHARING"
+              >Easy sharing</span
+            >
+          </div>
+          <div class="feature-badge">
+            🖥️
+            <span data-t="LOGIN_PAGE.ILLUSTRATION.BADGE_OPEN_SOURCE"
+              >Open Source</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="form-panel">
+        <div class="form-switcher">
+          {% if signup %}
+          <div class="form-tab" data-tab="login" data-t="LOGIN_PAGE.TABS.LOGIN">Login</div>
+          <div class="form-tab active" data-tab="signup" data-t="LOGIN_PAGE.TABS.SIGNUP">Signup</div>
+          {% else %}
+          <div class="form-tab active" data-tab="login" data-t="LOGIN_PAGE.TABS.LOGIN">Login</div>
+          <div class="form-tab" data-tab="signup" data-t="LOGIN_PAGE.TABS.SIGNUP">Signup</div>
+          {% endif %}
+        </div>
+        {% if signup %}
+        <div id="login-form" class="form-container">
+        {% else %}
+        <div id="login-form" class="form-container active">
+        {% endif %}
+          <h2 class="form-title" data-t="LOGIN_PAGE.LOGIN_FORM.TITLE">Login to your account</h2>
+          <p class="form-subtitle" data-t="LOGIN_PAGE.LOGIN_FORM.SUBTITLE">
+            Please enter your credentials to access your space and start
+            exploring your family tree.
+          </p>
+          {% if error %}
+          <div class="error"><i>❌</i> <span data-t="{{error_t}}">{{ error }}</span></div>
+          {% endif %} {% if message %}
+          <div class="message"><i>✅</i> <span data-t="{{message_t}}">{{ message }}</span></div>
+          {% endif %}
+          <form action="{{ url_for('auth.login') }}" method="POST" id="loginForm">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="input-group">
+              <input
+                type="email"
+                name="email"
+                autocomplete="email"
+                data-t-placeholder="LOGIN_PAGE.LOGIN_FORM.EMAIL_PLACEHOLDER"
+                required
+              />
+              <span class="input-icon">✉️</span>
+            </div>
+            <div class="input-group">
+              <input
+                type="password"
+                name="password"
+                id="loginPassword"
+                autocomplete="current-password"
+                data-t-placeholder="LOGIN_PAGE.LOGIN_FORM.PASSWORD_PLACEHOLDER"
+                required
+              />
+              <span class="password-toggle" id="loginToggle">👁️</span>
+            </div>
+            <div class="forgot-password-link">
+              <a href="#" id="forgotPasswordLink" data-t="LOGIN_PAGE.LOGIN_FORM.FORGOT_PASSWORD">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn-submit" data-t="LOGIN_PAGE.LOGIN_FORM.SUBMIT_BUTTON">Log In</button>
+          </form>
+          <button type="button" class="btn-submit btn-signup" id="goToSignup" data-t="LOGIN_PAGE.LOGIN_FORM.GO_TO_SIGNUP">
+            Create a new account
+          </button>
+        </div>
+
+        <div id="forgot-password-form" class="form-container">
+            <h2 class="form-title" data-t="LOGIN_PAGE.FORGOT_PASSWORD_FORM.TITLE">Reset password</h2>
+            <p class="form-subtitle" data-t="LOGIN_PAGE.FORGOT_PASSWORD_FORM.SUBTITLE">
+                Enter your email to receive a reset link.
+            </p>
+            <form action="{{ url_for('auth.request_password_reset') }}" method="POST" id="forgotPasswordForm">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="input-group">
+                    <input type="email" name="email" autocomplete="email" data-t-placeholder="LOGIN_PAGE.LOGIN_FORM.EMAIL_PLACEHOLDER" required />
+                    <span class="input-icon">✉️</span>
+                </div>
+                <button type="submit" class="btn-submit" data-t="LOGIN_PAGE.FORGOT_PASSWORD_FORM.SUBMIT_BUTTON">Send link</button>
+            </form>
+            <button type="button" class="btn-submit btn-signup" id="backToLogin" data-t="LOGIN_PAGE.FORGOT_PASSWORD_FORM.BACK_TO_LOGIN">
+                Back to login
+            </button>
+        </div>
+
+
+        {% if signup %}
+        <div id="signup-form" class="form-container active">
+        {% else %}
+        <div id="signup-form" class="form-container">
+        {% endif %}
+          <h2 class="form-title" data-t="LOGIN_PAGE.SIGNUP_FORM.TITLE">Create an account</h2>
+          <p class="form-subtitle" data-t="LOGIN_PAGE.SIGNUP_FORM.SUBTITLE">
+            Join our platform to create and share your family tree with your
+            family.
+          </p>
+          <div id="signupError" class="error" style="display: none"></div>
+          <form action="{{ url_for('auth.signup') }}" method="POST" id="signupForm">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="input-group">
+              <input type="text" name="pseudo" data-t-placeholder="LOGIN_PAGE.SIGNUP_FORM.PSEUDO_PLACEHOLDER" required />
+              <span class="input-icon">👤</span>
+            </div>
+            <div class="input-group">
+              <input type="email" name="email" data-t-placeholder="LOGIN_PAGE.LOGIN_FORM.EMAIL_PLACEHOLDER" required />
+              <span class="input-icon">✉️</span>
+            </div>
+            <div class="input-group">
+              <input
+                type="password"
+                name="password"
+                autocomplete="new-password"
+                id="signupPassword"
+                data-t-placeholder="LOGIN_PAGE.SIGNUP_FORM.CREATE_PASSWORD_PLACEHOLDER"
+                required
+              />
+              <span class="password-toggle" id="signupToggle">👁️</span>
+            </div>
+            <div class="input-group">
+              <input
+                type="password"
+                name="confirm_password"
+                autocomplete="new-password"
+                id="signupConfirmPassword"
+                data-t-placeholder="LOGIN_PAGE.SIGNUP_FORM.CONFIRM_PASSWORD_PLACEHOLDER"
+                required
+              />
+              <span class="password-toggle" id="signupConfirmToggle">👁️</span>
+            </div>
+            <div class="terms-container">
+              <input type="checkbox" name="terms" id="terms" required />
+              <label for="terms" class="terms-label">
+                <span data-t="LOGIN_PAGE.SIGNUP_FORM.TERMS_AGREEMENT">I accept the</span>
+                <span> </span>
+                <a href="/terms-of-service" data-t="LOGIN_PAGE.SIGNUP_FORM.TERMS_LINK">Terms of Service</a> <span data-t="LOGIN_PAGE.SIGNUP_FORM.AND">and the</span>
+                <span> </span>
+                <a href="/privacy-policy" data-t="LOGIN_PAGE.SIGNUP_FORM.PRIVACY_LINK">Privacy Policy</a>
+              </label>
+            </div>
+            <button type="submit" class="btn-submit" data-t="LOGIN_PAGE.SIGNUP_FORM.SUBMIT_BUTTON">Create my account</button>
+          </form>
+          <button type="button" class="btn-submit btn-signup" id="goToLogin" data-t="LOGIN_PAGE.SIGNUP_FORM.GO_TO_LOGIN">
+            I already have an account
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".form-tab").forEach((tab) => {
+        tab.addEventListener("click", function () {
+          document.querySelectorAll(".form-tab").forEach((t) => {
+            t.classList.remove("active");
+          });
+          this.classList.add("active");
+
+          const tabName = this.getAttribute("data-tab");
+          document.querySelectorAll(".form-container").forEach((form) => {
+            form.classList.remove("active");
+          });
+          document.getElementById(`${tabName}-form`).classList.add("active");
+
+          if (tabName === 'login') {
+              document.getElementById('forgot-password-form').classList.remove('active');
+              document.getElementById('login-form').classList.add('active');
+              document.getElementById('signup-form').classList.remove('active');
+          }
+        });
+      });
+
+      function togglePassword(inputId, toggleId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleButton = document.getElementById(toggleId);
+
+        toggleButton.addEventListener("click", function () {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.textContent = "👁️";
+          } else {
+            passwordInput.type = "password";
+            toggleButton.textContent = "👁️";
+          }
+
+          passwordInput.focus();
+        });
+      }
+
+      togglePassword("loginPassword", "loginToggle");
+      togglePassword("signupPassword", "signupToggle");
+      togglePassword("signupConfirmPassword", "signupConfirmToggle");
+
+      document
+        .getElementById("goToSignup")
+        .addEventListener("click", function () {
+          document.querySelector('[data-tab="signup"]').click();
+        });
+
+      document
+        .getElementById("goToLogin")
+        .addEventListener("click", function () {
+          document.querySelector('[data-tab="login"]').click();
+        });
+
+      document.getElementById('forgotPasswordLink').addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('login-form').classList.remove('active');
+          document.getElementById('signup-form').classList.remove('active');
+          document.getElementById('forgot-password-form').classList.add('active');
+      });
+
+      document.getElementById('backToLogin').addEventListener('click', function() {
+          document.getElementById('forgot-password-form').classList.remove('active');
+          document.getElementById('login-form').classList.add('active');
+          document.querySelector('.form-tab[data-tab="login"]').classList.add('active');
+          document.querySelector('.form-tab[data-tab="signup"]').classList.remove('active');
+        });
+
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (event) {
+          const errorDiv = document.getElementById("signupError");
+          const password = document.getElementById("signupPassword").value;
+          const confirmPassword = document.getElementById(
+            "signupConfirmPassword"
+          ).value;
+
+          if (password !== confirmPassword) {
+            event.preventDefault();
+            errorDiv.innerHTML = translate(
+              "LOGIN_PAGE.JS_MESSAGES.PASSWORDS_DONT_MATCH"
+            );
+            errorDiv.style.display = "flex";
+          } else {
+            errorDiv.style.display = "none";
+          }
+        });
+
+      window.addEventListener("load", function () {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          const params = new URLSearchParams(hash);
+          const accessToken = params.get("access_token");
+          const refreshToken = params.get("refresh_token");
+
+          if (accessToken && refreshToken) {
+            const loginForm = document.getElementById("login-form");
+            // Display a loading message
+            loginForm.innerHTML = `<div class="message"><i>⏳</i><span data-t="LOGIN_PAGE.JS_MESSAGES.AUTO_LOGIN_IN_PROGRESS">${translate("LOGIN_PAGE.JS_MESSAGES.AUTO_LOGIN_IN_PROGRESS")}</span></div>`;
+
+
+            fetch("/set-session", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                access_token: accessToken,
+                refresh_token: refreshToken,
+              }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.success) {
+                  window.location.href = data.redirect_url || "/home";
+                } else {
+                  loginForm.innerHTML = translate(
+                    "LOGIN_PAGE.JS_MESSAGES.AUTO_LOGIN_FAILED",
+                    { error: data.error }
+                  );                 
+                }
+              })
+              .catch((error) => {
+                loginForm.innerHTML = translate(
+                  "LOGIN_PAGE.JS_MESSAGES.AUTO_LOGIN_ERROR",
+                  { error: error }
+                );
+              });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

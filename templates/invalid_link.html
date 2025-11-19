@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The invitation link you used is invalid or has expired. Please request a new link or go back to the home page."
+    />
+
+    <title data-t="INVALID_LINK_PAGE.TITLE">Invalid Link - FamilyNest</title>
+    <link rel="stylesheet" href="/static/styles/invalid_link.css" />
+
+    <script defer src="/static/scripts/translation.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        initTranslations(getBestLanguage());
+      });
+    </script>
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="error-icon">⚠️</div>
+      <h1 data-t="INVALID_LINK_PAGE.ERROR_TITLE">Oops !</h1>
+      <p data-t="INVALID_LINK_PAGE.INVALID_LINK">{{message}}</p>
+      <a
+        href="{{ url_for('pages.home') }}"
+        class="home-link"
+        data-t="INVALID_LINK_PAGE.GO_HOME"
+        >Go Home</a
+      >
+    </div>
+  </body>
+</html>

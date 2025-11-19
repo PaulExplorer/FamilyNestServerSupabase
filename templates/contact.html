@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contact FamilyNest for support, questions, or feedback regarding the collaborative family tree project."
+    />
+
+    <title data-t="CONTACT_PAGE.TITLE">Contact - FamilyNest</title>
+    <link rel="stylesheet" href="/static/styles/contact.css" />
+
+    <script defer src="/static/scripts/translation.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        initTranslations(getBestLanguage());
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 data-t="CONTACT_PAGE.PAGE_TITLE">Contact</h1>
+      </header>
+
+      <div class="contact-content">
+        <p class="contact-intro" data-t="CONTACT_PAGE.INTRO">
+          For any questions, suggestions, or feedback, feel free to contact me.
+        </p>
+
+        <div class="contact-methods">
+          <div class="contact-item">
+            <div class="contact-icon email-icon">✉️</div>
+            <div class="contact-info">
+              <h3 data-t="CONTACT_PAGE.BY_EMAIL_TITLE">By Email</h3>
+              <p data-t="CONTACT_PAGE.BY_EMAIL_DESCRIPTION">
+                The fastest way to contact me directly.
+              </p>
+              <a href="mailto:{{support_email}}" class="contact-link"
+                >{{support_email}}</a
+              >
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon github-icon">🐙</div>
+            <div class="contact-info">
+              <h3 data-t="CONTACT_PAGE.ON_GITHUB_TITLE">Project on GitHub</h3>
+              <p data-t="CONTACT_PAGE.ON_GITHUB_DESCRIPTION">
+                Explore the source code and follow the project's progress.
+              </p>
+              <a
+                href="https://github.com/PaulExplorer"
+                class="contact-link"
+                target="_blank"
+                data-t="CONTACT_PAGE.ON_GITHUB_LINK"
+                >See the GitHub repository</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footer-note" data-t="CONTACT_PAGE.FOOTER_NOTE">
+        Replies usually within 24-48 hours. Thank you for your interest!
+      </p>
+    </div>
+  </body>
+</html>

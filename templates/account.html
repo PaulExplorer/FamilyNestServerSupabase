@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Manage your FamilyNest account: change password, update profile, or delete your account."
+    />
+
+    <title data-t="ACCOUNT_PAGE.TITLE">My Account - FamilyNest</title>
+    <link rel="stylesheet" href="/static/styles/account.css" />
+
+    <script defer src="/static/scripts/translation.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        initTranslations(getBestLanguage());
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 data-t="ACCOUNT_PAGE.PAGE_TITLE">My Account</h1>
+
+      {% if message %}
+      <div class="message success">
+        <span data-t="{{message_t}}">{{ message }}</span>
+      </div>
+      {% endif %} {% if error %}
+      <div class="message error">
+        <span data-t="{{error_t}}">{{ error }}</span>
+      </div>
+      {% endif %}
+
+      <div class="info-section">
+        <h2 data-t="ACCOUNT_PAGE.INFO_SECTION.TITLE">My Information</h2>
+        <p>
+          <strong data-t="ACCOUNT_PAGE.INFO_SECTION.EMAIL">Email:</strong>
+          {{ user.email }}
+        </p>
+        <p>
+          <strong data-t="ACCOUNT_PAGE.INFO_SECTION.USERNAME">Username:</strong>
+          {{ user.user_metadata.pseudo }}
+        </p>
+      </div>
+
+      <div class="password-section">
+        <h2 data-t="ACCOUNT_PAGE.PASSWORD_SECTION.TITLE">Change Password</h2>
+        <form action="{{ url_for('auth.account') }}" method="post">
+          <input type="hidden" name="action" value="change_password" />
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+          <div class="form-group">
+            <label
+              for="new_password"
+              data-t="ACCOUNT_PAGE.PASSWORD_SECTION.NEW_PASSWORD"
+              >New Password</label
+            >
+            <input
+              type="password"
+              id="new_password"
+              name="new_password"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label
+              for="confirm_password"
+              data-t="ACCOUNT_PAGE.PASSWORD_SECTION.CONFIRM_PASSWORD"
+              >Confirm New Password</label
+            >
+            <input
+              type="password"
+              id="confirm_password"
+              name="confirm_password"
+              autocomplete="new-password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            data-t="ACCOUNT_PAGE.PASSWORD_SECTION.UPDATE_BUTTON"
+          >
+            Update Password
+          </button>
+        </form>
+      </div>
+
+      <div class="delete-section">
+        <h2 data-t="ACCOUNT_PAGE.DELETE_SECTION.TITLE">Delete Account</h2>
+        <p data-t="ACCOUNT_PAGE.DELETE_SECTION.WARNING">
+          ⚠️ This action is irreversible. All your data, including your family
+          trees, will be permanently deleted.
+        </p>
+        <form
+          id="deleteForm"
+          action="{{ url_for('auth.account') }}"
+          method="post"
+        >
+          <input type="hidden" name="action" value="delete_account" />
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="showDeleteModal()"
+            data-t="ACCOUNT_PAGE.DELETE_SECTION.DELETE_BUTTON"
+          >
+            Delete My Account
+          </button>
+        </form>
+      </div>
+
+      <div class="actions">
+        <a
+          href="{{ url_for('pages.home') }}"
+          class="btn btn-secondary"
+          data-t="ACCOUNT_PAGE.BACK_TO_HOME"
+        >
+          Back to Home
+        </a>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-icon">⚠️</div>
+          <div class="modal-title" data-t="ACCOUNT_PAGE.DELETE_MODAL.TITLE">
+            Delete Account?
+          </div>
+        </div>
+        <div class="modal-body" data-t="ACCOUNT_PAGE.DELETE_MODAL.BODY">
+          Are you <strong>absolutely sure</strong> you want to permanently
+          delete your account? <br /><br />
+          This action <strong>cannot be undone</strong>. All your data,
+          including your family trees, will be permanently deleted.
+        </div>
+        <div class="modal-actions">
+          <button
+            data-t="FORM.CANCEL"
+            type="button"
+            class="btn btn-secondary"
+            onclick="hideDeleteModal()"
+          >
+            Cancel
+          </button>
+          <button
+            data-t="ACCOUNT_PAGE.DELETE_MODAL.CONFIRM_BUTTON"
+            type="button"
+            class="btn btn-danger"
+            onclick="confirmDelete()"
+          >
+            Yes, Delete My Account
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showDeleteModal() {
+        document.getElementById("deleteModal").classList.add("active");
+      }
+
+      function hideDeleteModal() {
+        document.getElementById("deleteModal").classList.remove("active");
+      }
+
+      function confirmDelete() {
+        document.getElementById("deleteForm").submit();
+      }
+
+      document
+        .getElementById("deleteModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            hideDeleteModal();
+          }
+        });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          hideDeleteModal();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+:root {
+  --bg-primary: #282828;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #333333;
+  --text-primary: #e8e8e8;
+  --text-secondary: #b0b0b0;
+  --accent: #00d4ff;
+  --accent-hover: #00b8e6;
+  --border: #404040;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.8;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--accent);
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent);
+}
+
+.contact-content {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+.email-icon {
+  color: var(--accent);
+}
+
+.github-icon {
+  color: var(--text-secondary);
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h3 {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.contact-info p {
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.contact-link {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: rgba(0, 212, 255, 0.1);
+}
+
+.contact-link:hover {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+}
+
+.footer-note {
+  margin-top: 50px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .contact-content {
+    padding: 30px 20px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-icon {
+    margin-bottom: 10px;
+  }
+}
