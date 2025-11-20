@@ -22,6 +22,7 @@ STORAGE_BUCKET_NAME = "tree_files"
 
 demo_id = os.environ.get("DEMO_TREE_ID")
 support_email = os.environ.get("SUPPORT_EMAIL")
+google_site_verification = os.environ.get("GOOGLE_SITE_VERIFICATION")
 
 csrf = CSRFProtect()
 

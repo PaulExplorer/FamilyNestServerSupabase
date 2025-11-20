@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 import uuid
 
 from .utils import login_required, no_cache
-from . import supabase, demo_id, support_email
+from . import supabase, demo_id, support_email, google_site_verification
 
 bp = Blueprint(
     "pages", __name__, template_folder="../templates", static_folder="../static"
@@ -19,17 +19,21 @@ bp = Blueprint(
 
 
 @bp.route("/favicon.ico")
+@bp.route("/robots.txt")
+@bp.route("/sitemap.xml")
 def favicon():
-    return send_from_directory(
-        bp.static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon"
-    )
+    return send_from_directory(bp.static_folder, request.path.lstrip("/"))
 
 
 @bp.route("/")
 def index():
     if "user_id" in session:
         return redirect(url_for("pages.home"))
-    return render_template("landing.html", demo_id=demo_id)
+    return render_template(
+        "landing.html",
+        demo_id=demo_id,
+        google_site_verification=google_site_verification,
+    )
 
 
 @bp.route("/contact")

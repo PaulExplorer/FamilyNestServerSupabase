@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /tree/
+Disallow: /account
+Disallow: /reset-password
+
+Sitemap: https://familynest-web.vercel.app/sitemap.xml
