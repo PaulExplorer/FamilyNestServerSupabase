@@ -21,7 +21,7 @@ bp = Blueprint(
 @bp.route("/favicon.ico")
 @bp.route("/robots.txt")
 @bp.route("/sitemap.xml")
-def favicon():
+def serve_static_root_files():
     return send_from_directory(bp.static_folder, request.path.lstrip("/"))
 
 
