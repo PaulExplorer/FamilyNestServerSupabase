@@ -126,9 +126,14 @@ def home():
     users_map = {}
     if all_user_ids:
         # Fetch user details (assuming admin privileges or proper Supabase setup for this RPC)
-        users_response = [
-            supabase.auth.admin.get_user_by_id(uid).user for uid in all_user_ids
-        ]
+        users_response = []
+        for uid in all_user_ids:
+            try:
+                user = supabase.auth.admin.get_user_by_id(uid).user
+                users_response.append(user)
+            except Exception:
+                continue
+        
         users_map = {
             str(user.id): {"id": str(user.id), "email": user.email}
             for user in users_response
