@@ -37,7 +37,27 @@ def get_family_tree_data(tree_id: uuid.UUID):
             .eq("tree_id", str(tree_id))
             .execute()
         )
-        person_data = [item["data"] for item in response.data]
+        person_data = []
+
+        for item in response.data:
+            # This is to remove default values from the person record to make the JSON smaller
+            person_record = item["data"]
+            default_fields = {
+                "nickname": "",
+                "notes": "",
+                "sources": [],
+                "events": {},
+                "country": "",
+                "job": "",
+                "photo": None,
+                "documents": [],
+                "version": 0,
+            }
+            for field, default_val in default_fields.items():
+                if field in person_record and person_record[field] == default_val:
+                    del person_record[field]
+
+            person_data.append(person_record)
         return jsonify({"data": person_data, "success": True})
     except Exception as e:
         return jsonify({"error": f"Database error: {e}", "success": False}), 500
