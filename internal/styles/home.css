@@ -300,11 +300,14 @@ h1 {
   align-items: center;
   justify-content: center;
   animation: fadeIn 0.2s ease;
-  overflow-y: auto;
 }
 
 .modal-overlay.active {
   display: flex;
+}
+
+body:has(.modal-overlay.active) {
+  overflow: hidden;
 }
 
 .modal {
@@ -314,8 +317,10 @@ h1 {
   padding: 2rem;
   max-width: 600px;
   width: 90%;
+  max-height: 90%;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   animation: modalSlideIn 0.3s ease;
+  overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -635,6 +640,7 @@ h1 {
 
 .user-info {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
 }
