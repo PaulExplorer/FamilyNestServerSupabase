@@ -344,15 +344,15 @@ def account():
                 try:
                     supabase.auth.admin.delete_user(user_id)
 
-                    trees_response = supabase.table("trees").select("id", "editors", "viewers").or_(
-                        f"editors.cs.{{{user_id}}}", f"viewers.cs.{{{user_id}}}"
+                    trees_response = supabase.table("trees").select("id", "editor_ids", "viewer_ids").or_(
+                        f"editor_ids.cs.{{{user_id}}},viewer_ids.cs.{{{user_id}}}"
                     ).execute()
 
                     if trees_response.data:
                         for tree in trees_response.data:
                             tree_id = tree["id"]
-                            editors = tree.get("editors", [])
-                            viewers = tree.get("viewers", [])
+                            editors = tree.get("editor_ids", [])
+                            viewers = tree.get("viewer_ids", [])
 
                             if user_id in editors:
                                 editors.remove(user_id)
@@ -360,7 +360,7 @@ def account():
                                 viewers.remove(user_id)
 
                             supabase.table("trees").update(
-                                {"editors": editors, "viewers": viewers}
+                                {"editor_ids": editors, "viewer_ids": viewers}
                             ).eq("id", tree_id).execute()
 
 
