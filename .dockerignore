@@ -1,0 +1,19 @@
+# Docker ignore file
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.db
+.git
+.gitignore
+.env
+.env.example
+.vscode
+.python-version
+README.md
+LICENSE
+vercel.json
+fromdist.py
+merge_translations.py
+sql/
