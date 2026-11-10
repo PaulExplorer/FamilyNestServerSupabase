@@ -103,24 +103,6 @@ Here's an overview of the key files and directories in this project:
    python main.py
    ```
 
-### Running with Docker
-
-If you have Docker and Docker Compose installed, you can skip the manual installation steps and run the application with a single command:
-
-1. **Configure environment variables:**
-   - Create a `.env` file from the example:
-     ```sh
-     cp .env.example .env
-     ```
-   - Fill in your Supabase credentials in the `.env` file.
-
-2. **Build and start the application:**
-   ```sh
-   docker-compose up --build
-   ```
-
-3. **Access the app:** Open your browser and go to [http://localhost:3000](http://localhost:3000).
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request or open an issue for any bugs or feature requests.
